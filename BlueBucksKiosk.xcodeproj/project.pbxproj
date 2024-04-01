@@ -14,6 +14,10 @@
 		37B43FD62BBAAA550038D52C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B43FD52BBAAA550038D52C /* Assets.xcassets */; };
 		37B43FD92BBAAA550038D52C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37B43FD72BBAAA550038D52C /* LaunchScreen.storyboard */; };
 		37B43FE12BBAAAEA0038D52C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 37B43FE02BBAAAEA0038D52C /* .gitignore */; };
+		4DDF64A02BBABF0000062704 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF649E2BBABF0000062704 /* CollectionViewCell.swift */; };
+		4DDF64A12BBABF0000062704 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DDF649F2BBABF0000062704 /* CollectionViewCell.xib */; };
+		4DDF64A62BBAC06A00062704 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF64A42BBAC06A00062704 /* TableViewCell.swift */; };
+		4DDF64A72BBAC06A00062704 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DDF64A52BBAC06A00062704 /* TableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		37B43FD82BBAAA550038D52C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37B43FDA2BBAAA550038D52C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37B43FE02BBAAAEA0038D52C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4DDF649E2BBABF0000062704 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		4DDF649F2BBABF0000062704 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		4DDF64A42BBAC06A00062704 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		4DDF64A52BBAC06A00062704 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,10 @@
 				37B43FD52BBAAA550038D52C /* Assets.xcassets */,
 				37B43FD72BBAAA550038D52C /* LaunchScreen.storyboard */,
 				37B43FDA2BBAAA550038D52C /* Info.plist */,
+				4DDF649E2BBABF0000062704 /* CollectionViewCell.swift */,
+				4DDF649F2BBABF0000062704 /* CollectionViewCell.xib */,
+				4DDF64A42BBAC06A00062704 /* TableViewCell.swift */,
+				4DDF64A52BBAC06A00062704 /* TableViewCell.xib */,
 			);
 			path = BlueBucksKiosk;
 			sourceTree = "<group>";
@@ -129,9 +141,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				37B43FE12BBAAAEA0038D52C /* .gitignore in Resources */,
+				4DDF64A72BBAC06A00062704 /* TableViewCell.xib in Resources */,
 				37B43FD92BBAAA550038D52C /* LaunchScreen.storyboard in Resources */,
 				37B43FD62BBAAA550038D52C /* Assets.xcassets in Resources */,
 				37B43FD42BBAAA540038D52C /* Main.storyboard in Resources */,
+				4DDF64A12BBABF0000062704 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,8 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DDF64A62BBAC06A00062704 /* TableViewCell.swift in Sources */,
 				37B43FD12BBAAA540038D52C /* ViewController.swift in Sources */,
 				37B43FCD2BBAAA540038D52C /* AppDelegate.swift in Sources */,
+				4DDF64A02BBABF0000062704 /* CollectionViewCell.swift in Sources */,
 				37B43FCF2BBAAA540038D52C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
