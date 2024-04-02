@@ -63,6 +63,11 @@
                 <constraint firstItem="wgq-fx-JSh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="WRh-I2-jfm"/>
                 <constraint firstAttribute="trailing" secondItem="wgq-fx-JSh" secondAttribute="trailing" id="qmn-O2-r2X"/>
             </constraints>
+            <connections>
+                <outlet property="cellImage" destination="oEV-dM-6DO" id="quT-G9-C0e"/>
+                <outlet property="name" destination="Bv2-qC-2hZ" id="de4-eI-p1W"/>
+                <outlet property="price" destination="cr9-fj-uSL" id="gzf-oC-0Pz"/>
+            </connections>
             <point key="canvasLocation" x="138.93129770992365" y="20.422535211267608"/>
         </collectionViewCell>
     </objects>

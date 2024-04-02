@@ -21,6 +21,3 @@ enum Size: Int {
     case grande = 473
     case venti = 591
 }
-
-let tabelCellVC = TableViewCell()
-let collectionCellVC = CollectionViewCell()
