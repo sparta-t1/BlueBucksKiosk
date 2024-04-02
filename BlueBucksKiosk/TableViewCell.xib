@@ -64,6 +64,9 @@
                         <buttonConfiguration key="configuration" style="plain" image="minus" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="9"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="tappedDecreseButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dh6-Vw-EJs"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YM1-sR-wnM">
                         <rect key="frame" x="326" y="2" width="8" height="8"/>
@@ -91,6 +94,9 @@
                         <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="9"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="tappedIncreseButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kdQ-UG-ftZ"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -117,6 +123,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cellCount" destination="Ya5-ZV-i59" id="Kpv-xH-A7d"/>
+                <outlet property="cellDelete" destination="YM1-sR-wnM" id="Rx9-ov-NkW"/>
+                <outlet property="cellImage" destination="gZu-gT-o9E" id="Xq5-As-Lj8"/>
+                <outlet property="cellMinus" destination="YUM-lF-2Sh" id="ifn-FE-ugo"/>
+                <outlet property="cellName" destination="8Rb-V2-aAx" id="f28-az-SPN"/>
+                <outlet property="cellPlus" destination="zN5-NU-7oT" id="8o6-NY-DoO"/>
+                <outlet property="cellPrice" destination="JyQ-Sc-M0B" id="JLp-Jf-HGI"/>
+                <outlet property="cellSize" destination="2Pq-lG-nRq" id="k1e-aj-hS7"/>
+            </connections>
             <point key="canvasLocation" x="151.14503816793894" y="29.577464788732396"/>
         </tableViewCell>
     </objects>
