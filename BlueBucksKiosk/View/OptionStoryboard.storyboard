@@ -160,11 +160,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="drinkCount" destination="nDE-rc-5q8" id="MBD-op-Fot"/>
                         <outlet property="drinkName" destination="3G8-cD-44B" id="9NA-bq-oUw"/>
                         <outlet property="grandeButton" destination="uRe-fb-wjI" id="zCy-ub-930"/>
                         <outlet property="optionAddPrice" destination="PAL-Xc-xrX" id="91i-kY-Ytu"/>
                         <outlet property="tallButton" destination="4XC-Ud-ZNE" id="9x4-4r-Gn5"/>
-                        <outlet property="totalCount" destination="nDE-rc-5q8" id="blC-Re-IwW"/>
                         <outlet property="ventiButton" destination="3Vd-tw-FsF" id="3N5-H1-Iia"/>
                     </connections>
                 </viewController>

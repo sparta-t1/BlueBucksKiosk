@@ -99,7 +99,7 @@ class OptionViewController: UIViewController {
     
     var sizeOptionPrice: Int = 0 // 사이즈 옵션 추가금
     
-    @IBOutlet weak var totalCount: UILabel!
+    @IBOutlet weak var drinkCount: UILabel!
     var count: Int = 1 {
         didSet {
             updateOptionAddPrice()
@@ -178,12 +178,12 @@ class OptionViewController: UIViewController {
         ventiButtonPressed = false
         updateButtonAppearance(for: ventiButton, isPressed: ventiButtonPressed)
         
-        if !grandeButtonPressed {
+        if !grandeButtonPressed { // grande 버튼이 눌리지 않은 경우
             sizeOptionPrice -= 500
-            if ventiButtonPressed && tallButtonPressed {
+            if ventiButtonPressed && tallButtonPressed { // venti 버튼, tall 버튼이 눌려 있는 경우
                 sizeOptionPrice -= 500
             }
-        } else {
+        } else { // 그 외 grande 버튼이 눌린 경우
             sizeOptionPrice += 500
         }
         addedOption = grandeButtonPressed ? "grande" : "" // 버튼이 눌렸을 경우 "grande", 아닐 경우 빈 문자열을 추가된 옵션에 업데이트
@@ -204,10 +204,10 @@ class OptionViewController: UIViewController {
         
         if !ventiButtonPressed { // venti 버튼이 눌리지 않은 경우
             sizeOptionPrice -= 1000
-            if grandeButtonPressed && tallButtonPressed { // grande 버튼, tall 버튼 둘 다 눌려 있는 경우 추가된 값 다시 취소
+            if grandeButtonPressed && tallButtonPressed { // grande 버튼, tall 버튼이 눌려 있는 경우
                 sizeOptionPrice -= 1000
             }
-        } else {
+        } else { // 그 외 venti 버튼이 눌린 경우
             sizeOptionPrice += 1000
         }
         addedOption = ventiButtonPressed ? "venti" : "" // 버튼이 눌렸을 경우 "venti", 아닐 경우 빈 문자열을 추가된 옵션에 업데이트
@@ -242,7 +242,7 @@ class OptionViewController: UIViewController {
     }
     
     func updateTotalCountLabel() {
-        totalCount.text = "\(count)"
+        drinkCount.text = "\(count)"
     }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
