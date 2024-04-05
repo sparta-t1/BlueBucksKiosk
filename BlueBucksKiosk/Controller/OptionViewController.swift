@@ -118,7 +118,7 @@ class OptionViewController: UIViewController {
             break
         }
         
-        addProductToArray(size: size)
+        addProduct(product: Product(drink: drink!, count: count, size: size))
     }
     func updateTotalCountLabel() {
         let totalCount = count
@@ -146,13 +146,15 @@ class OptionViewController: UIViewController {
         optionAddPrice.text = "가격: \(totalPrice)"
     }
     
-    func addProductToArray(size: Size) {
-        guard let drink = drink else {
-            return
-        }
+    func addProduct(product: Product) {
+        let isIncluded = self.products.firstIndex { $0.drink.id == product.drink.id && $0.size == product.size }
         
-        let product = Product(drink: drink, count: count, size: size)
-        products.append(product)
+        if let isIncluded = isIncluded {
+            products[isIncluded].count += product.count
+        } else {
+            products.append(product)
+        }
     }
 }
+
 
