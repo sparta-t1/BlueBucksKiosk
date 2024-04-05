@@ -20,16 +20,15 @@ class OptionViewController: UIViewController {
     var grandeBtnSelected = false
     var ventiBtnSelected = false
     
-    var drink: Drink? {
+    var product: Product? {
         didSet {
-            if let drink {
-                self.drinkName.text = drink.name.0
-                self.drinkCount.text = "\(drink.count)"
-                // self.price.text = "\(drink.price)"
+            if let product {
+                self.drinkName.text = product.drink.name.0
+                self.drinkCount.text = "\(product.count)"
+                self.drinkSize = "\(product.size)"
             }
         }
     }
-
     // MARK: - IBOutlets
     @IBOutlet weak var tallBtn: UIButton!
     @IBOutlet weak var grandeBtn: UIButton!
@@ -44,37 +43,32 @@ class OptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateTotalCountLabel() // 총 수량 업데이트
+        updateTotalCountLabel()
     }
     
     // MARK: - IBActions
     
     @IBAction func selectedButtonTapped(_ sender: UIButton) {
         [tallBtn, grandeBtn, ventiBtn].forEach { button in
-                   // 눌린 버튼에 대해서만 isSelected를 toggle
                    if sender === button {
                        button.isSelected.toggle()
                        index = sender.tag
+                       updateOptionAddPrice()
                    } else {
-                       // 다른 버튼 선택 해제
                        button.isSelected = false
                    }
                    updateButtonAppearance(button)
                }
-               
-               if let count = drink?.count {
-                   self.drinkCount.text = "\(count)"
-               } else {
-                   self.drinkCount.text = "0"
-               }
            }
+    
     @IBAction func updateCount(_ sender: UIButton) {
         if sender.tag == index {
-            drink?.count += 1
+            product?.count += 1
         } else {
-            drink?.count -= 1
+            product?.count -= 1
         }
-        updateTotalCountLabel() // totalCount 레이블 업데이트
+        updateTotalCountLabel()
+        updateOptionAddPrice()
     }
 
     @IBAction func addToCart(_ sender: UIButton) {
@@ -97,18 +91,17 @@ class OptionViewController: UIViewController {
         }
     }
 
-    
     func updateTotalCountLabel() {
-        drinkCount.text = "\(drink?.count ?? 0)"
+        drinkCount.text = "\(product?.count ?? 0)"
     }
     
     func updateOptionAddPrice() {
-        guard let drink = drink else {
+        guard let product = product else {
             optionAddPrice.text = "가격: N/A"
             return
         }
         
-        let totalPrice = drink.price * drink.count
+        let totalPrice = product.drink.price.0 * (product.count)
         optionAddPrice.text = "가격: \(totalPrice)"
     }
 }
