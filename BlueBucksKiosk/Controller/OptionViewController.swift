@@ -14,6 +14,10 @@ class OptionViewController: UIViewController {
     var drinkPrice = 0
     var price = 0
     
+    var tallBtn = 12
+    var grandeBtn = 12
+    var ventiBtn = 12
+    
     var index = 0
     
     var tallBtnSelected = false
@@ -22,21 +26,19 @@ class OptionViewController: UIViewController {
     
     var drink: Drink? {
         didSet {
-            if let drink {
-                
+            if let drink = drink {
                 self.drinkName.text = drink.name.0
-                self.drinkCount.text = String(drink.count)
-//                self.price.text = drink.price
+                self.drinkCount.text = "\(drink.count)"
+                // self.price.text = "\(drink.price)"
             }
         }
     }
 
     // MARK: - IBOutlets
-    
     @IBOutlet weak var tallBtn: UIButton!
     @IBOutlet weak var grandeBtn: UIButton!
     @IBOutlet weak var ventiBtn: UIButton!
-
+    
     @IBOutlet weak var drinkName: UILabel!
     @IBOutlet weak var optionAddPrice: UILabel!
     @IBOutlet weak var drinkCount: UILabel!
@@ -49,31 +51,41 @@ class OptionViewController: UIViewController {
         updateTotalCountLabel() // 총 수량 업데이트
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showNextView"{
+            if let nextVC = segue.destination as? MainViewController{
+                let nextVC = MainViewController()
+                nextVC.drink = self.drink
+            }
+        }
+    }
+    
     // MARK: - IBActions
     
     @IBAction func selectedButtonTapped(_ sender: UIButton) {
-        [tallBtn, grandeBtn, ventiBtn].enumerated().forEach { offset, button in
-            if sender.tag == offset {
-                let shouldToggle = !(sender === button && button.isSelected)
-                
-                if shouldToggle {
-                    button.isSelected.toggle()
-                    resetOtherButtons(button)
+            [tallBtn, grandeBtn, ventiBtn].enumerated().forEach { offset, button in
+                if sender.tag == offset {
+                    let shouldToggle = !(sender === button && button.isSelected)
+                    
+                    if shouldToggle {
+                        button.isSelected.toggle()
+                        resetOtherButtons(button)
+                    }
                 }
             }
+
+            if sender.tag != index {
+                index = sender.tag
+                if let count = drink?.count {
+                    self.drinkCount.text = "\(count)"
+                } else {
+                    self.drinkCount.text = "0"
+                }
+                // self.price.text = String(0)
+            }
+            btnAppearance(buttons: [sender], isPressed: true)
         }
 
-        if sender.tag != index {
-            index = sender.tag
-            self.drinkCount.text = String(drink.count)
-    //        self.price.text = String(0)
-        }
-        btnAppearance(buttons: [sender], isPressed: true)
-    }
-
-
-    
-    
     @IBAction func updateCount(_ sender: UIButton) {
         if sender.tag == index {
             drink?.count += 1
@@ -84,36 +96,47 @@ class OptionViewController: UIViewController {
         updateTotalCountLabel() // totalCount 레이블 업데이트
     }
 
-
     @IBAction func addToCart(_ sender: UIButton) {
+//        sender.backgroundColor = UIColor.bluebucks
+//        //performSegue(withIdentifier: "세그웨이 식별자 이름", sender: self)
+//        performSegue(withIdentifier: "showNextView", sender: self)
+        let mainVC = MainViewController()
+        self.present(mainVC, animated: true)
     }
+    
     
     // MARK: - Custom Methods
     
     func btnAppearance(buttons: [UIButton], isPressed: Bool) {
-        let borderColor = isPressed ? UIColor(named: "maincolor")?.cgColor : UIColor.lightGray.cgColor
+        let borderColor = isPressed ? UIColor.bluebucks.cgColor : UIColor.lightGray.cgColor
         let borderWidth: CGFloat = isPressed ? 2 : 1
         
-        buttons.forEach {
-            $0.layer.cornerRadius = 5
-            $0.layer.borderWidth = borderWidth
-            $0.layer.borderColor = borderColor
+        for button in buttons {
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = borderWidth
+            button.layer.borderColor = borderColor
         }
     }
     
     func resetOtherButtons(_ selectedButton: UIButton) {
         [tallBtn, grandeBtn, ventiBtn].forEach { button in
-            if button! != selectedButton {
-                (button as AnyObject).layer.borderColor = UIColor.lightGray.cgColor
+            if button != selectedButton {
+                button.layer.borderColor = UIColor.lightGray.cgColor
             }
         }
     }
+    
     func updateTotalCountLabel() {
-        drinkCount.text = "\(String(drink.count))"
+        drinkCount.text = "\(drink?.count ?? 0)"
     }
     
-    func updateOptionAddPrice() { // 선택된 음료와 옵션 추가금을 더한 총 가격을 업데이트
-        let totalPrice = drink?.price * String(drink.count)
+    func updateOptionAddPrice() {
+        guard let drink = drink else {
+            optionAddPrice.text = "가격: N/A"
+            return
+        }
+        
+        let totalPrice = drink.price * drink.count
         optionAddPrice.text = "가격: \(totalPrice)"
     }
 }

@@ -20,11 +20,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mainViewController = MainViewController()
             
+        let sb = UIStoryboard(name: "OptionStoryboard", bundle: .main).instantiateViewController(identifier: "OptionView")
+        
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = mainViewController
+        window.rootViewController = sb
         self.window = window
         window.makeKeyAndVisible()
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
