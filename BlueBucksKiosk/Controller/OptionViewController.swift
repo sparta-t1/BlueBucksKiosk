@@ -11,7 +11,6 @@ class OptionViewController: UIViewController {
     
     // MARK: - Properties
     
-    var drinkPrice = 0
     var price = 0
   
     var index = -1
@@ -19,6 +18,8 @@ class OptionViewController: UIViewController {
     var tallBtnSelected = false
     var grandeBtnSelected = false
     var ventiBtnSelected = false
+    
+    var drinkSize: String = ""
     
     var product: Product? {
         didSet {
@@ -100,8 +101,19 @@ class OptionViewController: UIViewController {
             optionAddPrice.text = "가격: N/A"
             return
         }
+
+        var totalPrice = 0
+            switch index {
+            case 0:
+                totalPrice = product.drink.price.0 * product.count
+            case 1:
+                totalPrice = product.drink.price.1 * product.count
+            case 2:
+                totalPrice = product.drink.price.2 * product.count
+            default:
+                break
+            }
         
-        let totalPrice = product.drink.price.0 * (product.count)
         optionAddPrice.text = "가격: \(totalPrice)"
     }
 }
