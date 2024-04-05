@@ -75,62 +75,60 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-H7-5aW">
-                                <rect key="frame" x="30" y="203" width="94" height="102"/>
+                                <rect key="frame" x="30" y="194" width="94" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="tall" imageContentMode="scaleAspectFit" strokeWidth="1" strokeOutset="7">
-                                        <color key="strokeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
+                                    <backgroundConfiguration key="background" image="tall" imageContentMode="scaleAspectFit" strokeWidth="0.0" strokeOutset="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jzy-LY-7Qk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aci-Zp-j2K">
-                                <rect key="frame" x="66" y="286" width="23" height="21"/>
+                                <rect key="frame" x="68" y="282" width="21" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSL-cq-D0r">
-                                <rect key="frame" x="149" y="201" width="94" height="102"/>
+                                <rect key="frame" x="149" y="194" width="94" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="grande" imageContentMode="scaleAspectFit" strokeWidth="1" strokeOutset="7">
-                                        <color key="strokeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
+                                    <backgroundConfiguration key="background" image="grande" imageContentMode="scaleAspectFit" strokeWidth="0.0" strokeOutset="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ghz-yi-iDQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="grande" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRq-mV-RvA">
-                                <rect key="frame" x="169" y="285" width="54" height="21"/>
+                                <rect key="frame" x="172" y="281" width="49" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iYw-Vt-w45">
-                                <rect key="frame" x="269" y="201" width="94" height="102"/>
+                                <rect key="frame" x="269" y="194" width="94" height="109"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
-                                    <backgroundConfiguration key="background" image="venti" imageContentMode="scaleAspectFit" strokeWidth="1" strokeOutset="7">
-                                        <color key="strokeColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
+                                    <backgroundConfiguration key="background" image="venti" imageContentMode="scaleAspectFit" strokeWidth="0.0" strokeOutset="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="g4t-ZB-w1Q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="venti" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-vv-AoC">
-                                <rect key="frame" x="298" y="285" width="37" height="21"/>
+                                <rect key="frame" x="300" y="281" width="34" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

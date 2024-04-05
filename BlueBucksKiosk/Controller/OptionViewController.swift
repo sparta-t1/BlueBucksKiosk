@@ -73,7 +73,6 @@ class OptionViewController: UIViewController {
                 self.drinkCount.text = "0"
             }
             btnAppearance(buttons: [sender], isPressed: true)
-        sender.setBackgroundImage(UIImage(named: "tall")!, for: .selected)
     }
     
     @IBAction func updateCount(_ sender: UIButton) {
