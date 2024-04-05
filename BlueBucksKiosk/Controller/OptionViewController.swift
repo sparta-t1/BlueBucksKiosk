@@ -12,30 +12,38 @@ class OptionViewController: UIViewController {
     // MARK: - Properties
     
     var price = 0
-  
+    var count = 0
     var index = -1
     
     var tallBtnSelected = false
     var grandeBtnSelected = false
     var ventiBtnSelected = false
     
-    var drinkSize: String = ""
+    var tall = Int()
+    var grande = Int()
+    var venti = Int()
     
-    var product: Product? {
+    var drink: Drink? { // 받는 값
         didSet {
-            if let product {
-                self.drinkName.text = product.drink.name.0
-                self.drinkCount.text = "\(product.count)"
-                self.drinkSize = "\(product.size)"
+            if let drink {
+                self.drinkNameKor.text = drink.name.0
+                self.drinkNameEng.text = drink.name.1
+                self.tall = drink.price.0
+                self.grande = drink.price.1
+                self.venti = drink.price.2
             }
         }
     }
+    
+    var products: [Product] = []
+    
     // MARK: - IBOutlets
     @IBOutlet weak var tallBtn: UIButton!
     @IBOutlet weak var grandeBtn: UIButton!
     @IBOutlet weak var ventiBtn: UIButton!
     
-    @IBOutlet weak var drinkName: UILabel!
+    @IBOutlet weak var drinkNameEng: UILabel!
+    @IBOutlet weak var drinkNameKor: UILabel!
     @IBOutlet weak var optionAddPrice: UILabel!
     @IBOutlet weak var drinkCount: UILabel!
     
@@ -51,27 +59,31 @@ class OptionViewController: UIViewController {
     
     @IBAction func selectedButtonTapped(_ sender: UIButton) {
         [tallBtn, grandeBtn, ventiBtn].forEach { button in
-                   if sender === button {
-                       button.isSelected.toggle()
-                       index = sender.tag
-                       updateOptionAddPrice()
-                   } else {
-                       button.isSelected = false
-                   }
-                   updateButtonAppearance(button)
-               }
-           }
+            if sender === button {
+                button.isSelected.toggle()
+                index = sender.tag
+                updateOptionAddPrice()
+            } else {
+                button.isSelected = false
+            }
+            updateButtonAppearance(button)
+        }
+    }
     
     @IBAction func updateCount(_ sender: UIButton) {
-        if sender.tag == index {
-            product?.count += 1
+        if sender.tag != index {
+            if count > 0 {
+                count -= 1
+            }
         } else {
-            product?.count -= 1
+            count += 1
         }
         updateTotalCountLabel()
         updateOptionAddPrice()
+        updateSize()
     }
-
+    
+    
     @IBAction func addToCart(_ sender: UIButton) {
         let mainVC = MainViewController()
         self.present(mainVC, animated: true)
@@ -80,40 +92,67 @@ class OptionViewController: UIViewController {
     // MARK: - Custom Methods
     
     func updateButtonAppearance(_ button: UIButton) {
-          let borderColor = button.isSelected ? UIColor.bluebucks.cgColor : UIColor.lightGray.cgColor
-          button.layer.cornerRadius = 5
-          button.layer.borderWidth = button.isSelected ? 2 : 1
-          button.layer.borderColor = borderColor
-      }
-
+        let borderColor = button.isSelected ? UIColor.bluebucks.cgColor : UIColor.lightGray.cgColor
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = button.isSelected ? 2 : 1
+        button.layer.borderColor = borderColor
+    }
+    
     func resetOtherButtons(_ selectedButton: UIButton) {
         [tallBtn, grandeBtn, ventiBtn].forEach { button in
             button.layer.borderColor = (button == selectedButton && button.isSelected) ? UIColor.bluebucks.cgColor : UIColor.lightGray.cgColor
         }
     }
-
+    
+    func updateSize() {
+        var size: Size = .tall // Default size
+        
+        switch index {
+        case 0:
+            size = .tall
+        case 1:
+            size = .grande
+        case 2:
+            size = .venti
+        default:
+            break
+        }
+        
+        addProductToArray(size: size)
+    }
     func updateTotalCountLabel() {
-        drinkCount.text = "\(product?.count ?? 0)"
+        let totalCount = count
+        drinkCount.text = "\(totalCount)"
     }
     
     func updateOptionAddPrice() {
-        guard let product = product else {
+        guard let drink = drink else {
             optionAddPrice.text = "가격: N/A"
             return
         }
-
+        
         var totalPrice = 0
-            switch index {
-            case 0:
-                totalPrice = product.drink.price.0 * product.count
-            case 1:
-                totalPrice = product.drink.price.1 * product.count
-            case 2:
-                totalPrice = product.drink.price.2 * product.count
-            default:
-                break
-            }
+        switch index {
+        case 0:
+            totalPrice = drink.price.0 * count
+        case 1:
+            totalPrice = drink.price.1 * count
+        case 2:
+            totalPrice = drink.price.2 * count
+        default:
+            break
+        }
         
         optionAddPrice.text = "가격: \(totalPrice)"
     }
+    
+    func addProductToArray(size: Size) {
+        guard let drink = drink else {
+            return
+        }
+        
+        let product = Product(drink: drink, count: count, size: size)
+        products.append(product)
+    }
 }
+
