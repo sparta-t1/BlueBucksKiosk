@@ -39,7 +39,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="담기"/>
                                 <connections>
-                                    <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BfB-NU-TZM"/>
+                                    <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RKQ-qQ-sXj"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nDE-rc-5q8">
@@ -54,12 +54,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="-"/>
+                                <connections>
+                                    <action selector="updateCount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U2G-VD-PsK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="chF-k0-vY4">
                                 <rect key="frame" x="86" y="712" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="+"/>
+                                <connections>
+                                    <action selector="updateCount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jwt-Lh-MQb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="컵 선택" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rdQ-p0-Nmx">
                                 <rect key="frame" x="30" y="146" width="49" height="21"/>
@@ -68,7 +74,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-H7-5aW">
+                            <button opaque="NO" tag="-1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hoc-H7-5aW">
                                 <rect key="frame" x="30" y="203" width="94" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -78,7 +84,7 @@
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="3y5-bL-YRg"/>
+                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="jzy-LY-7Qk"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tall" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aci-Zp-j2K">
@@ -89,7 +95,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSL-cq-D0r">
-                                <rect key="frame" x="149" y="202" width="94" height="102"/>
+                                <rect key="frame" x="149" y="201" width="94" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="">
@@ -98,7 +104,7 @@
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2lv-GZ-7L7"/>
+                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ghz-yi-iDQ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="grande" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRq-mV-RvA">
@@ -118,7 +124,7 @@
                                     </backgroundConfiguration>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="687-Dh-GY3"/>
+                                    <action selector="selectedButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="g4t-ZB-w1Q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="venti" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-vv-AoC">
@@ -133,9 +139,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="drinkCount" destination="nDE-rc-5q8" id="EXr-pv-1VC"/>
-                        <outlet property="drinkName" destination="3G8-cD-44B" id="5uD-A9-adm"/>
-                        <outlet property="optionAddPrice" destination="PAL-Xc-xrX" id="Oop-iz-ttq"/>
+                        <outlet property="drinkCount" destination="nDE-rc-5q8" id="jd4-Sb-tFq"/>
+                        <outlet property="drinkName" destination="3G8-cD-44B" id="7vK-uL-H6k"/>
+                        <outlet property="grandeBtn" destination="GSL-cq-D0r" id="Je1-n1-KCC"/>
+                        <outlet property="optionAddPrice" destination="PAL-Xc-xrX" id="78e-4e-e4q"/>
+                        <outlet property="tallBtn" destination="Hoc-H7-5aW" id="8Qu-Kr-ifG"/>
+                        <outlet property="ventiBtn" destination="iYw-Vt-w45" id="iE6-G4-RgP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

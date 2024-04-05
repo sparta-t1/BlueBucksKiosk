@@ -13,11 +13,7 @@ class OptionViewController: UIViewController {
     
     var drinkPrice = 0
     var price = 0
-    
-    var tallBtn = 12
-    var grandeBtn = 12
-    var ventiBtn = 12
-    
+  
     var index = 0
     
     var tallBtnSelected = false
@@ -51,48 +47,41 @@ class OptionViewController: UIViewController {
         updateTotalCountLabel() // 총 수량 업데이트
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showNextView"{
-            if let nextVC = segue.destination as? MainViewController{
-                let nextVC = MainViewController()
-                nextVC.drink = self.drink
-            }
-        }
-    }
-    
     // MARK: - IBActions
     
     @IBAction func selectedButtonTapped(_ sender: UIButton) {
-            [tallBtn, grandeBtn, ventiBtn].enumerated().forEach { offset, button in
-                if sender.tag == offset {
-                    let shouldToggle = !(sender === button && button.isSelected)
-                    
-                    if shouldToggle {
-                        button.isSelected.toggle()
-                        resetOtherButtons(button)
-                    }
+        [tallBtn, grandeBtn, ventiBtn].forEach { button in
+                // 눌린 버튼에 대해서만 isSelected를 toggle합니다.
+                if sender === button {
+                    button.isSelected.toggle()
+                } else {
+                    // 다른 버튼은 선택을 해제합니다.
+                    button.isSelected = false
                 }
             }
-
-            if sender.tag != index {
-                index = sender.tag
-                if let count = drink?.count {
-                    self.drinkCount.text = "\(count)"
-                } else {
-                    self.drinkCount.text = "0"
-                }
-                // self.price.text = String(0)
+            if sender === tallBtn {
+                index = -1
+            } else if sender === grandeBtn {
+                index = 1
+            } else if sender === ventiBtn {
+                index = 2
+            }
+            
+            if let count = drink?.count {
+                self.drinkCount.text = "\(count)"
+            } else {
+                self.drinkCount.text = "0"
             }
             btnAppearance(buttons: [sender], isPressed: true)
-        }
-
+        sender.setBackgroundImage(UIImage(named: "tall")!, for: .selected)
+    }
+    
     @IBAction func updateCount(_ sender: UIButton) {
         if sender.tag == index {
             drink?.count += 1
         } else {
             drink?.count -= 1
         }
-        
         updateTotalCountLabel() // totalCount 레이블 업데이트
     }
 
@@ -104,7 +93,6 @@ class OptionViewController: UIViewController {
         self.present(mainVC, animated: true)
     }
     
-    
     // MARK: - Custom Methods
     
     func btnAppearance(buttons: [UIButton], isPressed: Bool) {
@@ -115,16 +103,16 @@ class OptionViewController: UIViewController {
             button.layer.cornerRadius = 5
             button.layer.borderWidth = borderWidth
             button.layer.borderColor = borderColor
-        }
-    }
-    
+            
+               }
+           }
+
     func resetOtherButtons(_ selectedButton: UIButton) {
         [tallBtn, grandeBtn, ventiBtn].forEach { button in
-            if button != selectedButton {
-                button.layer.borderColor = UIColor.lightGray.cgColor
-            }
+            button.layer.borderColor = (button == selectedButton && button.isSelected) ? UIColor.bluebucks.cgColor : UIColor.lightGray.cgColor
         }
     }
+
     
     func updateTotalCountLabel() {
         drinkCount.text = "\(drink?.count ?? 0)"
