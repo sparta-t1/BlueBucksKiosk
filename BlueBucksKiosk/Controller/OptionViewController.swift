@@ -14,28 +14,22 @@ class OptionViewController: UIViewController {
     var price = 0
     var count = 0
     var index = -1
+    var size = Size.tall
+    
+    private let manager = ProductManager()
     
     var tallBtnSelected = false
     var grandeBtnSelected = false
     var ventiBtnSelected = false
-    
-    var tall = Int()
-    var grande = Int()
-    var venti = Int()
     
     var drink: Drink? { // 받는 값
         didSet {
             if let drink {
                 self.drinkNameKor.text = drink.name.0
                 self.drinkNameEng.text = drink.name.1
-                self.tall = drink.price.0
-                self.grande = drink.price.1
-                self.venti = drink.price.2
             }
         }
     }
-    
-    var products: [Product] = []
     
     // MARK: - IBOutlets
     @IBOutlet weak var tallBtn: UIButton!
@@ -62,11 +56,12 @@ class OptionViewController: UIViewController {
             if sender === button {
                 button.isSelected.toggle()
                 index = sender.tag
-                updateOptionAddPrice()
+                updateOptionAddPrice(size: size)
             } else {
                 button.isSelected = false
             }
             updateButtonAppearance(button)
+            
         }
     }
     
@@ -77,18 +72,23 @@ class OptionViewController: UIViewController {
             }
         } else {
             count += 1
-        }
+        } // 카운트가 1보다 큰 경우에만 실행
         updateTotalCountLabel()
-        updateOptionAddPrice()
-        updateSize()
+        updateOptionAddPrice(size: size) // 불리안 같이 넘기기
     }
-    
     
     @IBAction func addToCart(_ sender: UIButton) {
-        let mainVC = MainViewController()
-        self.present(mainVC, animated: true)
+        
+        if index == -1 {
+            
+        } else {
+            let product = Product(drink: drink!, count: count, size: size)
+            manager.addProduct(product: product)
+            let mainVC = MainViewController()
+            mainVC.modalPresentationStyle = .fullScreen
+            self.present(mainVC, animated: true)
+        }
     }
-    
     // MARK: - Custom Methods
     
     func updateButtonAppearance(_ button: UIButton) {
@@ -105,7 +105,7 @@ class OptionViewController: UIViewController {
     }
     
     func updateSize() {
-        var size: Size = .tall // Default size
+        var size: Size = .tall
         
         switch index {
         case 0:
@@ -118,43 +118,41 @@ class OptionViewController: UIViewController {
             break
         }
         
-        addProduct(product: Product(drink: drink!, count: count, size: size))
+        // size에 따라 가격 업데이트 로직 추가
+        updateOptionAddPrice(size: size)
+        
+        // 추가: 유효성 검사 수행
+        guard let drink = drink else {
+            // Drink가 없을 경우 처리
+            return
+        }
+        
+        guard let countText = drinkCount.text,
+              let count = Int(countText) else {
+            // 필요한 값이 존재하지 않는 경우 처리
+            return
+        }
     }
+
     func updateTotalCountLabel() {
-        let totalCount = count
-        drinkCount.text = "\(totalCount)"
+        drinkCount.text = "\(count)"
     }
     
-    func updateOptionAddPrice() {
+    func updateOptionAddPrice(size: Size) {
         guard let drink = drink else {
             optionAddPrice.text = "가격: N/A"
             return
         }
         
-        var totalPrice = 0
-        switch index {
-        case 0:
-            totalPrice = drink.price.0 * count
-        case 1:
-            totalPrice = drink.price.1 * count
-        case 2:
-            totalPrice = drink.price.2 * count
-        default:
-            break
+        switch size {
+        case .tall:
+            price = drink.price.0 * count
+        case .grande:
+            price = drink.price.1 * count
+        case .venti:
+            price = drink.price.2 * count
         }
         
-        optionAddPrice.text = "가격: \(totalPrice)"
-    }
-    
-    func addProduct(product: Product) {
-        let isIncluded = self.products.firstIndex { $0.drink.id == product.drink.id && $0.size == product.size }
-        
-        if let isIncluded = isIncluded {
-            products[isIncluded].count += product.count
-        } else {
-            products.append(product)
-        }
+        optionAddPrice.text = "가격: \(price)"
     }
 }
-
-
