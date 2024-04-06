@@ -20,10 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let mainViewController = MainViewController()
             
-        let sb = UIStoryboard(name: "OptionStoryboard", bundle: .main).instantiateViewController(identifier: "OptionView")
-        
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = sb
+        window.rootViewController = mainViewController
         self.window = window
         window.makeKeyAndVisible()
     }
