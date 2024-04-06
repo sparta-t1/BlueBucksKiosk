@@ -18,16 +18,10 @@ class OptionViewController: UIViewController {
     
     private let manager = ProductManager()
     
-    var tallBtnSelected = false
-    var grandeBtnSelected = false
-    var ventiBtnSelected = false
-    
-    var drink: Drink? { // 받는 값
+    var drink: Drink? {
         didSet {
-            if let drink {
-                self.drinkNameKor.text = drink.name.0
-                self.drinkNameEng.text = drink.name.1
-            }
+            self.drinkNameKor.text = drink?.name.0
+            self.drinkNameEng.text = drink?.name.1
         }
     }
     
@@ -56,31 +50,40 @@ class OptionViewController: UIViewController {
             if sender === button {
                 button.isSelected.toggle()
                 index = sender.tag
-                updateOptionAddPrice(size: size)
             } else {
                 button.isSelected = false
             }
             updateButtonAppearance(button)
-            
         }
+        updateSize()
+        let isOptionChosen = index != -1
+        updateOptionAddPrice(isOptionChosen: isOptionChosen)
     }
     
     @IBAction func updateCount(_ sender: UIButton) {
-        if sender.tag != index {
-            if count > 0 {
-                count -= 1
-            }
-        } else {
-            count += 1
-        } // 카운트가 1보다 큰 경우에만 실행
-        updateTotalCountLabel()
-        updateOptionAddPrice(size: size) // 불리안 같이 넘기기
+        // 옵션을 선택하지 않은 경우 또는 현재 버튼이 선택된 옵션과 동일한 경우에만 카운트 업데이트
+        if index == -1 || sender.tag == index {
+            if sender.tag != index {
+                if count > 0 {
+                    count -= 1
+                }
+            } else {
+                count += 1
+            } // 카운트가 1보다 큰 경우에만 실행
+            updateTotalCountLabel()
+            let isOptionChosen = index != -1
+            updateOptionAddPrice(isOptionChosen: isOptionChosen)
+        }
     }
     
     @IBAction func addToCart(_ sender: UIButton) {
-        
+        // 옵션을 선택하지 않은 경우에 알림 표시
         if index == -1 {
-            
+            let alert = UIAlertController(title: "안내", message: "상품을 선택해주세요.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
         } else {
             let product = Product(drink: drink!, count: count, size: size)
             manager.addProduct(product: product)
@@ -89,6 +92,7 @@ class OptionViewController: UIViewController {
             self.present(mainVC, animated: true)
         }
     }
+    
     // MARK: - Custom Methods
     
     func updateButtonAppearance(_ button: UIButton) {
@@ -105,8 +109,6 @@ class OptionViewController: UIViewController {
     }
     
     func updateSize() {
-        var size: Size = .tall
-        
         switch index {
         case 0:
             size = .tall
@@ -117,42 +119,29 @@ class OptionViewController: UIViewController {
         default:
             break
         }
-        
-        // size에 따라 가격 업데이트 로직 추가
-        updateOptionAddPrice(size: size)
-        
-        // 추가: 유효성 검사 수행
-        guard let drink = drink else {
-            // Drink가 없을 경우 처리
-            return
-        }
-        
-        guard let countText = drinkCount.text,
-              let count = Int(countText) else {
-            // 필요한 값이 존재하지 않는 경우 처리
-            return
-        }
     }
-
+    
     func updateTotalCountLabel() {
         drinkCount.text = "\(count)"
     }
     
-    func updateOptionAddPrice(size: Size) {
+    func updateOptionAddPrice(isOptionChosen: Bool) {
         guard let drink = drink else {
             optionAddPrice.text = "가격: N/A"
             return
         }
-        
-        switch size {
-        case .tall:
-            price = drink.price.0 * count
-        case .grande:
-            price = drink.price.1 * count
-        case .venti:
-            price = drink.price.2 * count
+        if isOptionChosen {
+            switch size {
+            case .tall:
+                price = drink.price.0 * count
+            case .grande:
+                price = drink.price.1 * count
+            case .venti:
+                price = drink.price.2 * count
+            }
+        } else {
+            price = 0 // 옵션이 선택되지 않았을 때 가격 초기화
         }
-        
         optionAddPrice.text = "가격: \(price)"
     }
 }

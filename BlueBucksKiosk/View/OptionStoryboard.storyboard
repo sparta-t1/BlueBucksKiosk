@@ -53,7 +53,7 @@
                                     <action selector="addToCart:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RKQ-qQ-sXj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Vcg-ob-17x">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Vcg-ob-17x">
                                 <rect key="frame" x="30" y="715" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="maincolor"/>
@@ -74,7 +74,7 @@
                                     <action selector="updateCount:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U2G-VD-PsK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="chF-k0-vY4">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="chF-k0-vY4">
                                 <rect key="frame" x="113" y="715" width="33" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="maincolor"/>
